@@ -1,0 +1,18 @@
+在卸载SQL Server后，大家都希望能够将注册表信息完全删干净，下面就将教您彻底删除SQL Server注册表的方法，供您参考。
+
+在卸载SQL Server开始——运行：输入regedit 进入注册表编辑器，进入之后执行下列操作：
+
+1.彻底删除SQL Server： 
+hkey_local_machine/software/Microsoft/MSSQLServer hkey_local_machine/software/Microsoft/Microsoft SQL Server hkey_current_user/software/Microsoft/Microsoft SQL Server hkey_current_user/software/Microsoft/MSSQLServer hkey_local_machine/system/currentcontrolset/control/sessionmanager/pendingfileren       ameoperations
+
+2。注册表中的相关信息删除：
+HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/MSSQLServer。 
+HKEY_LOCAL_MACHINE/System/CurrentControlSet/Services/MSDTC。 
+HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Session Manager中找到PendingFileRenameOperations项目，并删除它。这样就可以清除安装暂挂项目
+HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows/CurrentVersion/setup
+删除ExceptionComponents
+
+3、运行注册表,删除如下项：
+HKEY_CURRENT_USER/Software/Microsoft/Microsoft SQL Server
+HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Microsoft SQL Server 
+HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/MSSQLServer

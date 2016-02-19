@@ -1,0 +1,152 @@
+ QMLRegionMenu{
+        id:regionMenu;
+    }
+
+    Rectangle{
+        id:onMenu;
+        width:40;
+        height:120;
+        color:"#333333";
+        MouseArea{
+            anchors.fill: parent;
+            enabled: true;
+            hoverEnabled: true;
+            onClicked: {
+                rectCope.x = x +width + 30 ;
+                rectCope.y = y +height / 2 ;
+                //rectCope.setPoint((parent.width+parent.x),(parent.height+parent.y)/2);
+                var point = regionMenu.getRowAndColumn() ;
+                _row = point.y ;
+                _column = point.x ;
+               _width = point.x * _recMinWidth ;
+                _height = point.y * _recMinWidth ;
+                rectCope.show() ;
+            }
+
+        }
+    }
+
+    Rectangle{
+        id:rectCope ;
+        z:1;
+        width:_width ;
+        height:_height ;
+        color:"#999999" ;
+        visible: false ;
+        property int _x:0 ;
+        property int _y:0 ;
+        property bool _visible: false ;
+
+        onVisibleChanged: {
+            if(visible){
+                x: _x ;
+                y: _y ;
+                width = _width;
+                height = _height;
+
+
+                console.log("128/50="+ 120/50+"---150%50="+50%50)
+                var component = Qt.createComponent("MinScreen.qml");
+               // var subView = component.createObject(rectCope, {"x": 100, "y": 100} );
+                for(var row = 0; row < _row; row++)
+                {
+                    for(var clomnu = 0; clomnu < _column; clomnu++)
+                    {
+                       var subView =  component.createObject(rectCope,
+                                                             {"x": clomnu * _recMinWidth, "y": row * _recMinWidth ,
+                                                                 "width": _recMinWidth-2, "height": _recMinWidth-2} );
+                        subView.text =row + "," + clomnu ;
+                        console.log("width:"+_recMinWidth+"---height:"+_recMinWidth +"---id:"+subView.id);
+                      //  subView.destroy();
+                    }
+                }
+                component.destroy();
+                console.log("rectCope,chidId"+rectCope.childAt(120,1).text+"\n¸öÊý:"+rectCope.dynamicObjects);
+            }
+        }
+
+        Rectangle{
+            id: mouseCope ;
+            x: 0 ;
+            y: 0 ;
+            z: 2 ;
+            width: 0 ;
+            height: 0 ;
+            radius: 5 ;
+            color:"#00000000" ;
+            border.color: "#000000" ;
+            border.width: 2 ;
+            visible: true ;
+            property int _maxWidth: rectCope.width ;
+            property int _maxHeight: rectCope.height ;
+
+            Connections {
+                target: mouseCopeArea ;
+                onPositionChanged: {
+                }
+            }
+            function hide(){
+                mouseCope.visible = false;
+            }
+            function show(){
+                mouseCope.visible = true;
+            }
+        }
+
+        MouseArea{
+            id:mouseCopeArea ;
+            anchors.fill: parent ;
+            enabled: true ;
+            property bool _begin: false ;
+            property int _width: 0 ;
+            property int _height: 0 ;
+
+            onPressedChanged: {
+                _begin = !_begin ;
+                if(_begin){
+                    _width = mouseX ;
+                    _height = mouseY ;
+                    mouseCope.x=mouseX ;
+                    mouseCope.y=mouseY ;
+                    mouseCope.width  = 0 ;
+                    mouseCope.height = 0 ;
+                    mouseCope.show();
+                    rectCope.show();
+                }
+                else
+                {
+                    mouseCope.hide();
+                    rectCope.hide();
+                    var startX = _width / 50+(_width % 50 > 0 ? 1 : 0) ;
+                    var startY = _height / 50+(_height % 50 > 0 ? 1 : 0) ;
+                    var endX = mouseX / 50+(mouseX % 50 > 0 ? 1 : 0) ;
+                    var endY =mouseY / 50+(mouseY % 50 > 0 ? 1 : 0) ;
+                    regionMenu.onSetGoUpSize(startX, startY, endX, endY);
+
+                }
+            }
+
+            onPositionChanged: {
+                console.log("connecct_X:"+mouseX + "_Y:"+mouseY) ;
+
+                mouseCope.width = mouseX - _width ;
+                mouseCope.height = mouseY- _height;
+
+            }
+
+
+        }
+
+
+
+        function setPoint(x, y){
+            _x = x;
+            _x = y;
+        }
+        function show(){
+            rectCope.visible = true;
+        }
+        function hide(){
+            rectCope.visible = false;
+        }
+    }

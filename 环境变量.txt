@@ -1,0 +1,19 @@
+
+opengl
+D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include;D:\WinDDK\7600.16385.1\lib\win7\i386;D:\Qt\Qt5.4.0\5.4\msvc2012_opengl\include;E:\include\include\OpenGL
+
+lib
+D:\Qt\Qt5.4.0\5.4\msvc2012_opengl\lib;D:\WinDDK\7600.16385.1\lib;E:\include\Lib\OpenGL 
+
+
+D:\Qt\Qt5.4.0\5.4\msvc2012_opengl\lib;D:\WinDDK\7600.16385.1\lib;E:\include\Lib\OpenGL 
+
+include
+D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include;D:\WinDDK\7600.16385.1\lib\win7\i386;D:\Qt\Qt5.4.0\5.4\msvc2012_opengl\include;E:\include\include\OpenGL
+
+bin
+D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\amd64;
+
+
+
+C:\Program Files (x86)\Common Files\Autodesk Shared\Materials\

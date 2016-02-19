@@ -1,0 +1,8 @@
+1.    QMessageBox::critical(NULL,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("系统不受支持."),
+        QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+
+
+2.    QMessageBox message(QMessageBox::Warning,  QString::fromLocal8Bit("警告"),
+                        QString::fromLocal8Bit("连接失败是否重连?"), QMessageBox::Yes | QMessageBox::No,NULL );
+    if(message.exec() == QMessageBox::Yes)

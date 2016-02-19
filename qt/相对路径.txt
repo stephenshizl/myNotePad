@@ -1,0 +1,10 @@
+//到.exe目录
+QApplication::applicationDirPath()
+
+
+//到bin目录
+QDir::currentPath()
+
+/*c://admi*//*QDir::homePath()+*/ 
+
+/*+QDir::rootPath()*//*c://*/

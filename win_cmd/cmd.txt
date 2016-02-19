@@ -1,0 +1,55 @@
+
+cmd命令无法使用解决办法: 打开“我的电脑”“属性”“高级”选项卡，新建“环境变量”到“系统变量”添加PATH，将PATH的值设为c:\windows\system32。
+
+1、查询端口占用情况
+cmd > netstat -ano
+
+2、查询8080端口是否被占用
+cmd > netstat -ano|findstr 8080
+
+3、查询哪个程序占用了端口
+cmd > tasklist|findstr PID
+
+进程号通过2查询可以得到
+
+4、终止该占用进程
+cmd > ntsd -c q -p PID
+
+msconfig  --打开系统配置
+
+msinfo.exe  --查看环境等配置
+
+
+sysdm.cpl  ----系统属性.
+
+
+
+一、图形界面中：
+1. 最直观的：（在运行里面输入CMD，以下命令都是在CMD下输入的：）
+输入 sysdm.cpl, 系统属性.
+2. 输入dxdiag
+3. 输入 start msinfo32，winmsd系统信息
+3. 输入 devmgmt.msc，设备管理：
+4. 输入 taskmgr （或按Ctrl+Alt+Esc） 在性能选项卡看物理内存和pagefile
+5. 输入 winver 也可以查看内存大小
+
+二．CMD Shell下查看系统的硬件信息：
+1.查看磁盘信息：freedisk 可以查看每一个盘的剩余空间
+wmic diskdrive	可以看出来牌子和大小.
+Wmic logicaldisk	可以看到有几个盘，每一个盘的文件系统和剩余空间
+wmic volume	每个盘的剩余空间量，其实上一个命令也可以查看的
+fsutil volume diskfree c:	这个命令查看每一个卷的容量信息是很方便
+2.CPU信息
+wmic cpu	上面显示的有位宽，最大始终频率， 生产厂商，二级缓存等信息
+3.内存信息
+wmic memorychip	可以显示出来三条内存，两条256，一条1G的，速度400MHz
+4.BIOS信息
+wmic bios	主板型号	BIOS 版本
+
+
+
+流氓主页
+
+知乎
+
+修复一下winsock，win7需要管理员身份启动cmd.exe，然后输入netsh，再输入winsock，再输入reset，重启系统。

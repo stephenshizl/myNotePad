@@ -1,0 +1,3 @@
+这是系统处理的.比如你的程序是这样的void main(int argc, char *argv[]){....}并且你的程序生成了一个程序叫. test.exe那么传入参数的方式就是这样.在CMD窗口中.test.exe myargv1 myargv2 这样就argv中就有两上参数了. 一个是myargv1和myargv2.
+myargv1=argv[0];
+myargv2=argv[1];

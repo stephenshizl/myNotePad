@@ -1,0 +1,4 @@
+var startX = _startX / _recMinWidth + (_startX % _recMinWidth > 0 ? 1 : 0) ;
+                var startY = _startY / _recMinWidth + (_startY % _recMinWidth > 0 ? 1 : 0) ;
+                var endX = mouseX / _recMinWidth + (mouseX % _recMinWidth > 0 ? 1 : 0) ;
+                var endY =mouseY / _recMinWidth + (mouseY % _recMinWidth > 0 ? 1 : 0) ;

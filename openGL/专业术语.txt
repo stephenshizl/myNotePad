@@ -1,0 +1,2 @@
+VBO	(vertex buffer object)  顶点缓存对象
+FBO	(frame buffer object )  帧缓存对象

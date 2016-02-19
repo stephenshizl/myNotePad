@@ -1,0 +1,27 @@
+//In the constructor
+WidgetString = "";
+
+On_add_button_Clicked() //SLOT
+{
+ listwidget->addItem(lineedit->text());
+
+}
+
+On_Remove_Button_clicked() //SLOT
+{
+ listWidget->takeItem(listWidget->currentIndex());
+ //You may have to delete the the item taken in order to put that change into effect.
+ //Trigger paintevent
+}
+
+on_listWidget_currentTextChanged(QString currentText) //SLOT
+{
+ WidgetString = currentText;
+}
+
+paintevent()
+{
+ QPainter painter(Your_Qwidget);
+ painter.drawText ( int xPos, int YPos, WidgetString )
+ update();
+}

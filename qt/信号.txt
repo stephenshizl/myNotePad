@@ -1,0 +1,4 @@
+
+connect(SomeObj, SIGNAL(foo()), SIGNAL(bar())：通过一个signal自动触发另一个signal。
+
+QObject::deleteLater：在事件处理循环中调用，则在事件处理循环结束时删除自己；在事件处理循环外调用，则在下一个事件处理循环开始时删除自己

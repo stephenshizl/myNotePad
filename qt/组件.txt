@@ -1,0 +1,79 @@
+使用JavaScript动态创建QML object
+动态创建QML object 有两种方式：
+
+使用Qt.createComponent()
+
+使用Qt.createQmlObject()
+
+如果你自定义了一个QML组件，则使用Qt.createComponent()动态创建对象会方便一些。方便重用自定义component。
+
+
+
+
+                        newObject = Qt.createQmlObject('import QtQuick 2.0 ;
+                                                            Rectangle {
+                                                            id:barRight;
+                                                            color: "#33333303";
+                                                            x:winBox.width-20;
+                                                            y:82;
+                                                            width: 20;
+                                                            height: winBox.height-(62+82);
+                                                            z:0;
+                                                            clip: true;
+                                                            Rectangle{
+                                                                id:scalingY;
+                                                                width:parent.width;
+                                                                color:"#666666";
+                                                                height: 50;
+                                                                x: 0;
+                                                                y: 0;
+                                                                z: 1;
+                                                                anchors.horizontalCenter: parent.horizontalCenter;
+property int upDown: 0;
+state: "none";
+MouseArea{
+z: 1;
+    anchors.fill: parent;
+    enabled: true;
+        onEntered: {
+            scalingY.state = "none";
+        }
+        onPressed: {
+            if(scalingY.state == "none"){
+                scalingY.state = "pressDown";
+                scalingY.upDown = mouseY;
+            }
+        }
+        onClicked: {
+            scalingY.state = "none";
+        }
+        onPositionChanged: {
+
+            if(scalingY.state == "pressDown" && mouse.buttons==Qt.LeftButton){
+                scalingY.upDown = (mouseY - scalingY.upDown)*1;
+
+                if((scalingY.parent.height-scalingY.height)<=scalingY.y){
+                    if(scalingY.upDown<0){
+                        scalingY.y =scalingY.y + scalingY.upDown;
+                    }
+                }
+                if(scalingY.y<=0){
+                    if(scalingY.upDown>0){
+                        scalingY.y =scalingY.y + scalingY.upDown;
+                    }
+                }
+                if((scalingY.parent.height-scalingY.height)>=scalingY.y && scalingY.y>=0){
+                    scalingY.y =scalingY.y + scalingY.upDown ;
+                }
+                if(scalingY.y <0){
+                    scalingY.y=0;
+                }
+                recCenter.y = -scalingY.y;
+
+                scalingY.upDown = (mouseY - scalingY.upDown)*1;
+            }
+        }
+
+}
+                                                            }
+                                    }',winBox, "dynamicSnippet1");

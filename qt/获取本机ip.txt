@@ -1,0 +1,11 @@
+ QString localHostName = QHostInfo::localHostName();
+    QHostInfo info = QHostInfo::fromName(localHostName);
+    pWidget = new QWidget();
+    foreach(QHostAddress address,info.addresses())
+    {
+        if(address.protocol() == QAbstractSocket::IPv4Protocol)
+        {
+            m_sLocalIp = address.toString();
+            m_sLocalIp = m_sLocalIp;
+        }
+    }

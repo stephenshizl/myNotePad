@@ -1,0 +1,9 @@
+#pragma warning(push)
+// close warning
+#pragma warning(disable:4005)
+#include "iostream"
+#include "util/Util.h"
+#include "entity/Ball.h"
+#include "util/OpenNI_NiTE.h"
+#include "scene/MyScene.h"
+#pragma warning(pop)

@@ -1,0 +1,22 @@
+A.qml
+Rectangle{
+
+
+	signal setGoOnSize(var startX, var startY, var endX, var endY);
+
+}
+
+B.qml
+
+Rectangle{
+
+	A{
+		id: aa
+		onSetGoOnSize:{
+			var x = startX;
+			var y = startY;
+			......
+		}
+
+	}
+}

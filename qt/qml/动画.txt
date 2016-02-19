@@ -1,0 +1,47 @@
+特别注意,要做的动画控件大小与位置不能用anchors, 否则动画将不起作用
+
+
+ 
+
+
+x: 0
+    id: menuRect ;
+    state:"show" ;
+    states: [
+        State {
+            name: "hide" ;
+            PropertyChanges {
+                target: menuRect ;
+                x: -300 ;
+            }
+        },
+        State{
+            name: "show" ;
+            PropertyChanges {
+                target: menuRect ;
+                x: 300 ;
+            }
+        }
+    ]
+    transitions:[
+        Transition {
+            from: "show";
+            to: "hide";
+            ParallelAnimation {
+                NumberAnimation {
+                    properties: "x" ;
+                    duration: 688 ;
+                }
+            }
+        },
+        Transition {
+            from: "hide";
+            to: "show" ;
+            ParallelAnimation {
+                NumberAnimation {
+                    properties: "x" ;
+                    duration: 688 ;
+                }
+            }
+        }
+    ]

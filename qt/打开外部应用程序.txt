@@ -1,0 +1,30 @@
+
+
+#include <QProcess>
+
+//¿ªÆô
+  QProcess::startDetached("D:\\Program Files (x86)\\TTPlayer\\TTPlayer.exe",QStringList("C:\\Users\\Administrator\\Desktop\\music.mp3"));
+
+QProcess::start("D:\\Program Files (x86)\\TTPlayer\\TTPlayer.exe",QStringList("C:\\Users\\Administrator\\Desktop\\music.mp3"));
+
+
+//¹Ø±Õ
+QProcess::close();
+
+
+#include <QProcess>
+void test::fnOpens()
+{
+    QString path = QApplication::applicationDirPath();
+    m_process = new QProcess();
+   // m_process->startDetached("D:\\Program Files (x86)\\TTPlayer\\TTPlayer.exe",
+   //                          QStringList("C:\\Users\\Administrator\\Desktop\\music.mp3"));
+m_process->start("D:\\Program Files (x86)\\TTPlayer\\TTPlayer.exe",
+                 QStringList("C:\\Users\\Administrator\\Desktop\\music.mp3"));
+}
+
+void test::fnClose()
+{
+    m_process->close();
+}
+
