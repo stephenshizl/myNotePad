@@ -1,0 +1,9 @@
+
+//分割成数组
+	var pe = passInfo[p].toString().split(',') ;
+	var t =pe[0].toString() ;
+
+
+//字串替换
+            t = t.replace(0,9,"") ;
+
