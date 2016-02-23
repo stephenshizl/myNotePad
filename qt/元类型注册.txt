@@ -1,0 +1,8 @@
+//main.cpp
+
+
+qRegisterMetaType<std::vector<CBedInfor>>("std::vector<CBedInfor>");
+    qRegisterMetaType<CBedInfor>("CBedInfor");
+
+
+
